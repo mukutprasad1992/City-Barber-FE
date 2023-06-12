@@ -3,11 +3,14 @@ import { View, TextInput, Text, Button, StyleSheet } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import backgroundImage from "../assets/bg-img.jpg";
+ 
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required("Please enter valid email"),
   password: Yup.string().required("Please enter valid password"),
 });
+
+
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -82,6 +85,7 @@ const styles = StyleSheet.create({
   error: {
     marginBottom: 16,
     color: "#ff0000",
+
   },
 });
 

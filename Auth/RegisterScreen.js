@@ -2,32 +2,33 @@ import React, { useState } from "react";
 import { View, TextInput, Text, Button, StyleSheet } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import backgroundImage from "../assets/bg-img.jpg"; 
+import backgroundImage from "../assets/barber-2.jpg";
+
+
+
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().required("  Please enter valid email "),
-  password: Yup.string().required("  Please enter valid password "),
-  Firstname : Yup.string().required(" Please enter firstname"),
-  Lastname : Yup.string().required(" Please enter lastname"),
-
+  email: Yup.string().required("Please enter valid email "),
+  password: Yup.string().required("Please enter valid password "),
+  firstname: Yup.string().required("Please enter firstname"),
+  lastname: Yup.string().required("Please enter lastname"),
 });
 
 const RegisterScreen = () => {
-  
   const [Firstname, setFirstname] = useState("");
   const [Lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [FirstnameError,setFirstnameError] = useState("");
-  const [LastnameError,setLastnameError] = useState ("");
+  const [firstnameError, setFirstnameError] = useState("");
+  const [lastnameError, setLastnameError] = useState("");
 
   const handleLogin = () => {
-    // Perform login logic here
+    // Perform Register logic here
     console.log("Logging in...");
-    console.log("Firstname",Firstname);
-    console.log("lastname",Lastname);
+    console.log("Firstname", firstname);
+    console.log("Lastname", lastname);
     console.log("Email:", email);
     console.log("Password:", password);
 
@@ -42,24 +43,22 @@ const RegisterScreen = () => {
       return;
     }
 
-if (!Firstname){
-  setFirstnameError("Please enter Firstname");
-  return;
-}
+    if (!firstname) {
+      setFirstnameError("Please enter Firstname");
+      return;
+    }
 
-if (!Lastname){
-  setLastnameError("Please enter Lastname");
-  return;
-}
+    if (!lastname) {
+      setLastnameError("Please enter Lastname");
+      return;
+    }
 
 
 
     console.log("Email:", email);
     console.log("Password:", password);
-    console.log("Firstname:",Firstname);
-    console.log("Lastname:",Lastname);
-
-
+    console.log("Firstname:", firstname);
+    console.log("Lastname:", lastname);
 
     setFirstname("");
     setLastname("");
@@ -80,21 +79,23 @@ if (!Lastname){
             <TextInput
               style={styles.input}
               placeholder="Firstname"
-              onChangeText={handleChange("Firstname")}
+              onChangeText={handleChange("firstname")}
               onBlur={handleBlur("firstname")}
-              value={values.Firstname}
-            
+              value={values.firstname}
             />
-            {errors.Firstname && <Text style={styles.error}>{errors.Firstname}</Text>}
+            {errors.firstname && (
+              <Text style={styles.error}>{errors.firstname}</Text>
+            )}
             <TextInput
               style={styles.input}
               placeholder="Lastname"
-              onChangeText={handleChange("Lastname")}
-              onBlur={handleBlur("Lastname")}
-              value={values.Lastname}
-              
+              onChangeText={handleChange("lastname")}
+              onBlur={handleBlur("lastname")}
+              value={values.lastname}
             />
-          {errors.Lastname && <Text style={styles.error}>{errors.Lastname}</Text>}
+            {errors.lastname && (
+              <Text style={styles.error}>{errors.lastname}</Text>
+            )}
             <TextInput
               style={styles.input}
               placeholder="Email"
